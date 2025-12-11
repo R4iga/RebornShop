@@ -1,21 +1,41 @@
-// Mobile Navigation Toggle
-const hamburger = document.querySelector('.hamburger');
+// Custom Cursor
+const cursor = document.querySelector('.cursor');
+const cursorFollower = document.querySelector('.cursor-follower');
+
+if (cursor && cursorFollower) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        setTimeout(() => {
+            cursorFollower.style.left = e.clientX - 20 + 'px';
+            cursorFollower.style.top = e.clientY - 20 + 'px';
+        }, 100);
+    });
+    
+    document.addEventListener('mousedown', () => {
+        cursor.style.transform = 'scale(0.8)';
+        cursorFollower.style.transform = 'scale(0.8)';
+    });
+    
+    document.addEventListener('mouseup', () => {
+        cursor.style.transform = 'scale(1)';
+        cursorFollower.style.transform = 'scale(1)';
+    });
+}
+
+// Mobile Menu Toggle
+const menuBtn = document.querySelector('.menu-btn');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+if (menuBtn && navMenu) {
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
     });
-});
+}
 
-// Smooth Scrolling for Navigation Links
+// Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -29,23 +49,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Product Category Filter
-const categoryBtns = document.querySelectorAll('.category-btn');
+// Product Filter
+const filterTabs = document.querySelectorAll('.filter-tab');
 const productCards = document.querySelectorAll('.product-card');
 
-categoryBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active class from all buttons
-        categoryBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        btn.classList.add('active');
+filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        filterTabs.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        tab.classList.add('active');
         
-        const category = btn.getAttribute('data-category');
+        const filter = tab.getAttribute('data-filter');
         
         productCards.forEach(card => {
-            if (category === 'all' || card.getAttribute('data-category') === category) {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
                 card.style.display = 'block';
-                // Add fade-in animation
                 card.style.animation = 'fadeIn 0.5s ease';
             } else {
                 card.style.display = 'none';
@@ -63,17 +82,21 @@ productBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
         cartCount++;
-        cartCountElement.textContent = cartCount;
+        if (cartCountElement) {
+            cartCountElement.textContent = cartCount;
+        }
         
-        // Add animation to cart icon
-        const cartIcon = cartCountElement.parentElement;
-        cartIcon.style.animation = 'bounce 0.5s ease';
-        setTimeout(() => {
-            cartIcon.style.animation = '';
-        }, 500);
-        
-        // Show success message
+        // Show notification
         showNotification('Product added to cart!');
+        
+        // Add animation to cart button
+        const cartBtn = document.querySelector('.cart-btn');
+        if (cartBtn) {
+            cartBtn.style.animation = 'bounce 0.5s ease';
+            setTimeout(() => {
+                cartBtn.style.animation = '';
+            }, 500);
+        }
     });
 });
 
@@ -86,13 +109,14 @@ function showNotification(message) {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: var(--gradient-primary);
-        color: white;
+        background: var(--accent);
+        color: var(--primary);
         padding: 1rem 2rem;
         border-radius: 8px;
-        box-shadow: var(--shadow-lg);
+        font-weight: 600;
         z-index: 10000;
         animation: slideIn 0.3s ease;
+        font-family: var(--font-mono);
     `;
     
     document.body.appendChild(notification);
@@ -100,27 +124,106 @@ function showNotification(message) {
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => {
-            document.body.removeChild(notification);
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
         }, 300);
     }, 3000);
 }
 
-// Contact Form Submission
-const contactForm = document.querySelector('.contact-form');
+// Search Functionality
+const searchBtn = document.querySelector('.search-btn');
+if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+        const searchModal = document.createElement('div');
+        searchModal.className = 'search-modal';
+        searchModal.innerHTML = `
+            <div class="search-modal-content">
+                <div class="search-modal-header">
+                    <h3>Search Products</h3>
+                    <button class="search-modal-close">&times;</button>
+                </div>
+                <div class="search-modal-body">
+                    <input type="text" placeholder="Search for gift cards, subscriptions, games..." class="search-input">
+                    <div class="search-results"></div>
+                </div>
+            </div>
+        `;
+        
+        searchModal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.9);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        `;
+        
+        document.body.appendChild(searchModal);
+        
+        // Close modal
+        const closeBtn = searchModal.querySelector('.search-modal-close');
+        closeBtn.addEventListener('click', () => {
+            document.body.removeChild(searchModal);
+        });
+        
+        searchModal.addEventListener('click', (e) => {
+            if (e.target === searchModal) {
+                document.body.removeChild(searchModal);
+            }
+        });
+        
+        // Focus on search input
+        const searchInput = searchModal.querySelector('.search-input');
+        searchInput.focus();
+        
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const results = searchModal.querySelector('.search-results');
+            
+            if (query.length > 2) {
+                const filteredProducts = Array.from(productCards).filter(card => {
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    const description = card.querySelector('.product-description').textContent.toLowerCase();
+                    return title.includes(query) || description.includes(query);
+                });
+                
+                if (filteredProducts.length > 0) {
+                    results.innerHTML = filteredProducts.map(card => {
+                        const title = card.querySelector('.product-title').textContent;
+                        const description = card.querySelector('.product-description').textContent;
+                        const price = card.querySelector('.price').textContent;
+                        
+                        return `
+                            <div class="search-result-item">
+                                <h4>${title}</h4>
+                                <p>${description}</p>
+                                <span class="search-result-price">${price}</span>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    results.innerHTML = '<p class="no-results">No products found</p>';
+                }
+            } else {
+                results.innerHTML = '';
+            }
+        });
+    });
+}
+
+// Contact Form
+const contactForm = document.querySelector('.form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        // Show success message
-        showNotification('Message sent successfully! We\'ll get back to you soon.');
-        
-        // Reset form
+        showNotification('Message sent successfully!');
         contactForm.reset();
     });
 }
@@ -149,105 +252,41 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Header Scroll Effect
-const header = document.querySelector('.header');
+const nav = document.querySelector('.nav');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > 100) {
-        header.style.background = 'rgba(255, 255, 255, 0.98)';
-        header.style.boxShadow = 'var(--shadow-md)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.boxShadow = 'none';
+    if (nav) {
+        if (currentScroll > 100) {
+            nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            nav.style.backdropFilter = 'blur(20px)';
+        } else {
+            nav.style.background = 'rgba(10, 10, 10, 0.8)';
+            nav.style.backdropFilter = 'blur(20px)';
+        }
     }
     
     lastScroll = currentScroll;
 });
 
-// Search Functionality
-const searchBtn = document.querySelector('.fa-search').parentElement;
-searchBtn.addEventListener('click', () => {
-    const searchModal = document.createElement('div');
-    searchModal.className = 'search-modal';
-    searchModal.innerHTML = `
-        <div class="search-modal-content">
-            <div class="search-modal-header">
-                <h3>Search Products</h3>
-                <button class="search-modal-close">&times;</button>
-            </div>
-            <div class="search-modal-body">
-                <input type="text" placeholder="Search for gift cards, subscriptions, games..." class="search-input">
-                <div class="search-results"></div>
-            </div>
-        </div>
-    `;
-    
-    searchModal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 10000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        animation: fadeIn 0.3s ease;
-    `;
-    
-    document.body.appendChild(searchModal);
-    
-    // Close modal
-    const closeBtn = searchModal.querySelector('.search-modal-close');
-    closeBtn.addEventListener('click', () => {
-        document.body.removeChild(searchModal);
-    });
-    
-    searchModal.addEventListener('click', (e) => {
-        if (e.target === searchModal) {
-            document.body.removeChild(searchModal);
-        }
-    });
-    
-    // Focus on search input
-    const searchInput = searchModal.querySelector('.search-input');
-    searchInput.focus();
-    
-    // Search functionality
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        const results = searchModal.querySelector('.search-results');
+// Product Action Buttons (Like/Save)
+const productActions = document.querySelectorAll('.product-action');
+productActions.forEach(action => {
+    action.addEventListener('click', (e) => {
+        e.stopPropagation();
+        action.classList.toggle('active');
         
-        if (query.length > 2) {
-            // Filter products based on search
-            const filteredProducts = Array.from(productCards).filter(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                return title.includes(query) || description.includes(query);
-            });
-            
-            if (filteredProducts.length > 0) {
-                results.innerHTML = filteredProducts.map(card => {
-                    const title = card.querySelector('h3').textContent;
-                    const description = card.querySelector('p').textContent;
-                    const price = card.querySelector('.price').textContent;
-                    
-                    return `
-                        <div class="search-result-item">
-                            <h4>${title}</h4>
-                            <p>${description}</p>
-                            <span class="search-result-price">${price}</span>
-                        </div>
-                    `;
-                }).join('');
-            } else {
-                results.innerHTML = '<p class="no-results">No products found</p>';
-            }
+        if (action.classList.contains('active')) {
+            action.style.background = 'var(--accent)';
+            action.style.color = 'var(--primary)';
+            action.style.borderColor = 'var(--accent)';
+            showNotification('Added to favorites!');
         } else {
-            results.innerHTML = '';
+            action.style.background = 'transparent';
+            action.style.color = 'var(--text-secondary)';
+            action.style.borderColor = 'var(--border)';
         }
     });
 });
@@ -258,7 +297,7 @@ style.textContent = `
     @keyframes fadeIn {
         from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
         }
         to {
             opacity: 1;
@@ -300,14 +339,25 @@ style.textContent = `
         }
     }
     
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+    }
+    
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
     .search-modal-content {
-        background: white;
-        border-radius: 16px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
         width: 90%;
         max-width: 600px;
         max-height: 80vh;
         overflow: hidden;
-        box-shadow: var(--shadow-xl);
     }
     
     .search-modal-header {
@@ -315,11 +365,16 @@ style.textContent = `
         justify-content: space-between;
         align-items: center;
         padding: 1.5rem;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .search-modal-header h3 {
+        color: var(--text-primary);
+        margin: 0;
     }
     
     .search-modal-close {
-        background: none;
+        background: transparent;
         border: none;
         font-size: 1.5rem;
         cursor: pointer;
@@ -334,7 +389,7 @@ style.textContent = `
     }
     
     .search-modal-close:hover {
-        background: var(--bg-secondary);
+        background: var(--hover-bg);
         color: var(--text-primary);
     }
     
@@ -345,10 +400,22 @@ style.textContent = `
     .search-input {
         width: 100%;
         padding: 1rem;
-        border: 2px solid var(--border-color);
-        border-radius: 8px;
-        font-size: 1rem;
+        background: var(--secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        color: var(--text-primary);
+        font-family: var(--font-primary);
         margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+    
+    .search-input:focus {
+        outline: none;
+        border-color: var(--accent);
+    }
+    
+    .search-input::placeholder {
+        color: var(--text-muted);
     }
     
     .search-results {
@@ -358,15 +425,17 @@ style.textContent = `
     
     .search-result-item {
         padding: 1rem;
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
+        background: var(--secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
         margin-bottom: 0.5rem;
         cursor: pointer;
         transition: all 0.3s ease;
     }
     
     .search-result-item:hover {
-        background: var(--bg-secondary);
+        background: var(--hover-bg);
+        border-color: var(--accent);
         transform: translateY(-2px);
     }
     
@@ -382,67 +451,45 @@ style.textContent = `
     }
     
     .search-result-price {
-        color: var(--primary-color);
+        color: var(--accent);
         font-weight: 600;
+        font-family: var(--font-mono);
     }
     
     .no-results {
         text-align: center;
-        color: var(--text-secondary);
+        color: var(--text-muted);
         padding: 2rem;
     }
     
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
+    .menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
     }
     
-    .hamburger.active span:nth-child(2) {
+    .menu-btn.active span:nth-child(2) {
         opacity: 0;
     }
     
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
+    .menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 0 0 var(--radius-md) var(--radius-md);
+        padding: 2rem;
+        flex-direction: column;
+        gap: 1rem;
+        z-index: 999;
     }
 `;
 document.head.appendChild(style);
-
-// Loading Animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// Parallax Effect for Hero Section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    const heroCards = document.querySelectorAll('.hero-card');
-    
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-    
-    heroCards.forEach((card, index) => {
-        const speed = 0.5 + (index * 0.1);
-        card.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
-
-// Add hover effect to buttons
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', (e) => {
-        const rect = e.target.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        e.target.style.setProperty('--mouse-x', `${x}px`);
-        e.target.style.setProperty('--mouse-y', `${y}px`);
-    });
-});
 
 // Performance optimization - Debounce scroll events
 function debounce(func, wait) {
@@ -463,3 +510,14 @@ const debouncedScroll = debounce(() => {
 }, 10);
 
 window.addEventListener('scroll', debouncedScroll);
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    // Add loading animation
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});

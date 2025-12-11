@@ -3,109 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RebornShop - Premium Gift Cards & Subscriptions</title>
+    <title>RebornShop - Digital Marketplace</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <h2>Reborn<span>Shop</span></h2>
-                </div>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#products" class="nav-link">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#features" class="nav-link">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Contact</a>
-                    </li>
-                </ul>
-                <div class="nav-actions">
-                    <button class="btn btn-outline">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="btn btn-outline">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
-                    </button>
-                    <button class="btn btn-primary">Sign In</button>
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+    <!-- Cursor Effect -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <span class="logo-icon">◆</span>
+                    <span class="logo-text">RebornShop</span>
                 </div>
             </div>
-        </nav>
-    </header>
+            
+            <div class="nav-center">
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#products" class="nav-link">Products</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+            
+            <div class="nav-right">
+                <button class="nav-btn search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-btn cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="nav-btn menu-btn">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
+        <div class="hero-bg">
+            <div class="hero-grid"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-label">
+                    <span>◆ WELCOME TO</span>
+                </div>
                 <h1 class="hero-title">
-                    Premium Gift Cards & <span>Digital Subscriptions</span>
+                    <span class="title-line">Digital</span>
+                    <span class="title-line">Marketplace</span>
                 </h1>
-                <p class="hero-description">
-                    Discover the perfect gift with our curated selection of premium gift cards and digital subscriptions. Instant delivery, secure transactions, and unbeatable prices.
+                <p class="hero-subtitle">
+                    Premium gift cards, subscriptions & digital codes delivered instantly
                 </p>
                 <div class="hero-actions">
-                    <button class="btn btn-primary btn-large">Shop Now</button>
-                    <button class="btn btn-outline btn-large">
-                        <i class="fas fa-play-circle"></i> Watch Demo
+                    <button class="btn-primary">
+                        <span>Explore Products</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-secondary">
+                        <span>Watch Demo</span>
+                        <i class="fas fa-play"></i>
                     </button>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <h3>50K+</h3>
-                        <p>Happy Customers</p>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="float-card card-1">
+                        <div class="card-icon">🎁</div>
+                        <div class="card-label">Gift Cards</div>
                     </div>
-                    <div class="stat">
-                        <h3>1000+</h3>
-                        <p>Products Available</p>
+                    <div class="float-card card-2">
+                        <div class="card-icon">👑</div>
+                        <div class="card-label">Premium</div>
                     </div>
-                    <div class="stat">
-                        <h3>24/7</h3>
-                        <p>Customer Support</p>
+                    <div class="float-card card-3">
+                        <div class="card-icon">🎮</div>
+                        <div class="card-label">Gaming</div>
                     </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="hero-card">
-                    <div class="card-content">
-                        <i class="fas fa-gift"></i>
-                        <h3>Gift Cards</h3>
-                        <p>From $5 to $500</p>
-                    </div>
-                </div>
-                <div class="hero-card">
-                    <div class="card-content">
-                        <i class="fas fa-crown"></i>
-                        <h3>Premium Subscriptions</h3>
-                        <p>Netflix, Spotify, Disney+</p>
-                    </div>
-                </div>
-                <div class="hero-card">
-                    <div class="card-content">
-                        <i class="fas fa-gamepad"></i>
-                        <h3>Gaming Cards</h3>
-                        <p>Steam, PlayStation, Xbox</p>
-                    </div>
-                </div>
-            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-text">Scroll</div>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
@@ -113,109 +108,184 @@
     <section id="products" class="products">
         <div class="container">
             <div class="section-header">
-                <h2>Our Premium Products</h2>
-                <p>Choose from our wide selection of digital products</p>
+                <div class="section-label">
+                    <span>◆ PRODUCTS</span>
+                </div>
+                <h2 class="section-title">Digital Products</h2>
+                <p class="section-subtitle">Curated selection of premium digital products</p>
             </div>
             
-            <div class="product-categories">
-                <button class="category-btn active" data-category="all">All Products</button>
-                <button class="category-btn" data-category="giftcards">Gift Cards</button>
-                <button class="category-btn" data-category="subscriptions">Subscriptions</button>
-                <button class="category-btn" data-category="gaming">Gaming</button>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="giftcards">Gift Cards</button>
+                <button class="filter-tab" data-filter="subscriptions">Subscriptions</button>
+                <button class="filter-tab" data-filter="gaming">Gaming</button>
             </div>
-
+            
             <div class="products-grid">
-                <!-- Product Card 1 -->
+                <!-- Product 1 -->
                 <div class="product-card" data-category="giftcards">
-                    <div class="product-badge">Popular</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1606787613220-5e3c5ae0b4b7?w=300&h=200&fit=crop" alt="Amazon Gift Card">
+                    <div class="product-header">
+                        <div class="product-tag">Popular</div>
+                        <div class="product-actions">
+                            <button class="product-action">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3>Amazon Gift Card</h3>
-                        <p>Perfect for any occasion</p>
+                    <div class="product-image">
+                        <div class="product-bg">
+                            <img src="https://images.unsplash.com/photo-1606787613220-5e3c5ae0b4b7?w=400&h=300&fit=crop" alt="Amazon">
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Amazon Gift Card</h3>
+                        <p class="product-description">Perfect for any occasion</p>
                         <div class="product-price">
                             <span class="price">$25 - $500</span>
                         </div>
-                        <button class="btn btn-primary product-btn">Buy Now</button>
+                        <button class="product-btn">
+                            <span>Add to Cart</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Product Card 2 -->
+                <!-- Product 2 -->
                 <div class="product-card" data-category="subscriptions">
-                    <div class="product-badge">Best Seller</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300&h=200&fit=crop" alt="Netflix Subscription">
+                    <div class="product-header">
+                        <div class="product-tag">Best Seller</div>
+                        <div class="product-actions">
+                            <button class="product-action">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3>Netflix Premium</h3>
-                        <p>4K + HDR streaming</p>
+                    <div class="product-image">
+                        <div class="product-bg">
+                            <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=300&fit=crop" alt="Netflix">
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Netflix Premium</h3>
+                        <p class="product-description">4K + HDR streaming</p>
                         <div class="product-price">
                             <span class="price">$15.99/month</span>
                         </div>
-                        <button class="btn btn-primary product-btn">Subscribe</button>
+                        <button class="product-btn">
+                            <span>Subscribe</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Product Card 3 -->
+                <!-- Product 3 -->
                 <div class="product-card" data-category="gaming">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1493711662062-fa5414835037?w=300&h=200&fit=crop" alt="Steam Wallet">
+                    <div class="product-header">
+                        <div class="product-actions">
+                            <button class="product-action">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3>Steam Wallet</h3>
-                        <p>Buy games, DLCs and more</p>
+                    <div class="product-image">
+                        <div class="product-bg">
+                            <img src="https://images.unsplash.com/photo-1493711662062-fa5414835037?w=400&h=300&fit=crop" alt="Steam">
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Steam Wallet</h3>
+                        <p class="product-description">Buy games, DLCs and more</p>
                         <div class="product-price">
                             <span class="price">$20 - $100</span>
                         </div>
-                        <button class="btn btn-primary product-btn">Buy Now</button>
+                        <button class="product-btn">
+                            <span>Add to Cart</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Product Card 4 -->
+                <!-- Product 4 -->
                 <div class="product-card" data-category="subscriptions">
-                    <div class="product-badge">New</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1611339545273-4b6b5343eb27?w=300&h=200&fit=crop" alt="Spotify Premium">
+                    <div class="product-header">
+                        <div class="product-tag">New</div>
+                        <div class="product-actions">
+                            <button class="product-action">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3>Spotify Premium</h3>
-                        <p>Ad-free music streaming</p>
+                    <div class="product-image">
+                        <div class="product-bg">
+                            <img src="https://images.unsplash.com/photo-1611339545273-4b6b5343eb27?w=400&h=300&fit=crop" alt="Spotify">
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Spotify Premium</h3>
+                        <p class="product-description">Ad-free music streaming</p>
                         <div class="product-price">
                             <span class="price">$9.99/month</span>
                         </div>
-                        <button class="btn btn-primary product-btn">Subscribe</button>
+                        <button class="product-btn">
+                            <span>Subscribe</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Product Card 5 -->
+                <!-- Product 5 -->
                 <div class="product-card" data-category="giftcards">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=200&fit=crop" alt="Apple Gift Card">
+                    <div class="product-header">
+                        <div class="product-actions">
+                            <button class="product-action">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3>Apple Gift Card</h3>
-                        <p>Apps, music, and more</p>
+                    <div class="product-image">
+                        <div class="product-bg">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop" alt="Apple">
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">Apple Gift Card</h3>
+                        <p class="product-description">Apps, music, and more</p>
                         <div class="product-price">
                             <span class="price">$10 - $500</span>
                         </div>
-                        <button class="btn btn-primary product-btn">Buy Now</button>
+                        <button class="product-btn">
+                            <span>Add to Cart</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Product Card 6 -->
+                <!-- Product 6 -->
                 <div class="product-card" data-category="gaming">
-                    <div class="product-badge">Hot Deal</div>
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1606836576983-8b45c639c6d3?w=300&h=200&fit=crop" alt="PlayStation Plus">
+                    <div class="product-header">
+                        <div class="product-tag">Hot Deal</div>
+                        <div class="product-actions">
+                            <button class="product-action">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3>PlayStation Plus</h3>
-                        <p>Online gaming & free games</p>
+                    <div class="product-image">
+                        <div class="product-bg">
+                            <img src="https://images.unsplash.com/photo-1606836576983-8b45c639c6d3?w=400&h=300&fit=crop" alt="PlayStation">
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">PlayStation Plus</h3>
+                        <p class="product-description">Online gaming & free games</p>
                         <div class="product-price">
                             <span class="price">$59.99/year</span>
                         </div>
-                        <button class="btn btn-primary product-btn">Buy Now</button>
+                        <button class="product-btn">
+                            <span>Add to Cart</span>
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -226,57 +296,44 @@
     <section id="features" class="features">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose RebornShop?</h2>
-                <p>We provide the best digital shopping experience</p>
+                <div class="section-label">
+                    <span>◆ FEATURES</span>
+                </div>
+                <h2 class="section-title">Why Choose Us</h2>
+                <p class="section-subtitle">Experience the best digital shopping platform</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-rocket"></i>
                     </div>
                     <h3>Instant Delivery</h3>
-                    <p>Receive your digital products instantly via email</p>
+                    <p>Get your digital products delivered instantly to your email</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-shield-check"></i>
                     </div>
-                    <h3>100% Secure</h3>
-                    <p>Bank-level security for all your transactions</p>
+                    <h3>Secure Payments</h3>
+                    <p>Bank-level encryption and security for all transactions</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
+                        <i class="fas fa-headphones"></i>
                     </div>
                     <h3>24/7 Support</h3>
-                    <p>Our customer service team is always here to help</p>
+                    <p>Round-the-clock customer assistance for all your needs</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fas fa-coins"></i>
                     </div>
                     <h3>Best Prices</h3>
-                    <p>Competitive pricing on all digital products</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync"></i>
-                    </div>
-                    <h3>Easy Refunds</h3>
-                    <p>Hassle-free refund policy if you're not satisfied</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <h3>Rewards Program</h3>
-                    <p>Earn points with every purchase</p>
+                    <p>Competitive pricing with regular deals and discounts</p>
                 </div>
             </div>
         </div>
@@ -285,28 +342,39 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About RebornShop</h2>
-                    <p>Founded in 2023, RebornShop has become the leading destination for digital gift cards and subscriptions. We pride ourselves on offering a seamless shopping experience with instant delivery and exceptional customer service.</p>
-                    <p>Our mission is to make digital gifting simple, secure, and enjoyable for everyone. Whether you're shopping for yourself or looking for the perfect gift, we've got you covered.</p>
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="section-label">
+                        <span>◆ ABOUT</span>
+                    </div>
+                    <h2 class="section-title">Digital Excellence</h2>
+                    <p class="about-text">
+                        RebornShop is your premier destination for digital products. We specialize in providing instant access to gift cards, subscriptions, and gaming codes.
+                    </p>
+                    <p class="about-text">
+                        Our platform combines cutting-edge technology with exceptional customer service to deliver the best digital shopping experience.
+                    </p>
+                    
                     <div class="about-stats">
-                        <div class="about-stat">
-                            <h3>50K+</h3>
-                            <p>Customers</p>
+                        <div class="stat-item">
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">Customers</div>
                         </div>
-                        <div class="about-stat">
-                            <h3>1000+</h3>
-                            <p>Products</p>
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Products</div>
                         </div>
-                        <div class="about-stat">
-                            <h3>4.9/5</h3>
-                            <p>Rating</p>
+                        <div class="stat-item">
+                            <div class="stat-number">4.9/5</div>
+                            <div class="stat-label">Rating</div>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop" alt="About RebornShop">
+                
+                <div class="about-visual">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop" alt="About">
+                    </div>
                 </div>
             </div>
         </div>
@@ -316,47 +384,63 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p>Have questions? We're here to help</p>
+                <div class="section-label">
+                    <span>◆ CONTACT</span>
+                </div>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">We're here to help with any questions</p>
             </div>
             
-            <div class="contact-content">
+            <div class="contact-grid">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
                             <p>support@rebornshop.com</p>
                         </div>
                     </div>
+                    
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
                             <p>+1 (555) 123-4567</p>
                         </div>
                     </div>
+                    
                     <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Business Hours</h3>
-                            <p>24/7 Customer Support</p>
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Hours</h4>
+                            <p>24/7 Support</p>
                         </div>
                     </div>
                 </div>
                 
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
-                </form>
+                <div class="contact-form">
+                    <form class="form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="form-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -365,45 +449,60 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>RebornShop</h3>
-                    <p>Your trusted destination for premium digital products and gift cards.</p>
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">◆</span>
+                        <span class="logo-text">RebornShop</span>
+                    </div>
+                    <p class="footer-description">
+                        Your trusted marketplace for premium digital products
+                    </p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Products</h4>
-                    <ul>
-                        <li><a href="#">Gift Cards</a></li>
-                        <li><a href="#">Subscriptions</a></li>
-                        <li><a href="#">Gaming Cards</a></li>
-                        <li><a href="#">Digital Codes</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Refund Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <ul>
+                            <li><a href="#">Gift Cards</a></li>
+                            <li><a href="#">Subscriptions</a></li>
+                            <li><a href="#">Gaming</a></li>
+                            <li><a href="#">Digital Codes</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Press</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Terms</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
